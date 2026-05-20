@@ -1,0 +1,186 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+  .rerow-index {
+    min-height: 700px;
+    font-family: 'DM Sans', sans-serif;
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+  }
+
+  .rerow-index-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.pexels.com/photos/9784001/pexels-photo-9784001.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.7) brightness(0.35);
+    z-index: 0;
+  }
+
+  .rerow-index-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(0,0,0,0.2) 0%, rgba(10,30,20,0.75) 100%);
+    z-index: 1;
+  }
+
+  .rerow-index-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 560px;
+  }
+
+  .rerow-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #7ecfaa;
+    border: 1px solid #3a7a5a;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+  }
+
+  .rerow-index-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 58px;
+    line-height: 1.0;
+    color: #f0ede6;
+    margin: 0 0 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .rerow-index-headline span {
+    color: #7ecfaa;
+  }
+
+  .rerow-index-desc {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.75;
+    margin: 0 0 2.5rem;
+  }
+
+  .rerow-survey-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .rerow-survey-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1.75rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    text-decoration: none;
+    text-align: left;
+    display: block;
+  }
+
+  .rerow-survey-card:hover {
+    background: rgba(126,207,170,0.08);
+    border-color: #3a7a5a;
+  }
+
+  .rerow-survey-card-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    color: #4a7a62;
+    margin-bottom: 0.5rem;
+  }
+
+  .rerow-survey-card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #f0ede6;
+    letter-spacing: 0.5px;
+    margin: 0 0 0.5rem;
+    line-height: 1.1;
+  }
+
+  .rerow-survey-card-desc {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+  }
+
+  .rerow-survey-card-cta {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #7ecfaa;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .rerow-survey-card-cta::after {
+    content: '→';
+    transition: transform 0.15s;
+  }
+
+  .rerow-survey-card:hover .rerow-survey-card-cta::after {
+    transform: translateX(4px);
+  }
+
+  .rerow-index-footer {
+    position: relative;
+    z-index: 2;
+    margin-top: 2.5rem;
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+  }
+
+  .rerow-index-footer a {
+    color: #4a7a62;
+    text-decoration: none;
+  }
+</style>
+
+<div class="rerow-index">
+  <div class="rerow-index-bg"></div>
+  <div class="rerow-index-overlay"></div>
+
+  <div class="rerow-index-content">
+    <div class="rerow-badge">REROW Project</div>
+    <h1 class="rerow-index-headline">Your Input<br>Powers <span>Change</span></h1>
+    <p class="rerow-index-desc">The REROW project is mapping waste-to-energy potential across rural America. We have a short questionnaire for each audience -- please select the one that best describes you. It takes less than two minutes, and your responses go directly to the project team.</p>
+
+    <div class="rerow-survey-links">
+      <a class="rerow-survey-card" href="cooperative-survey.html">
+        <div class="rerow-survey-card-tag">For Cooperatives</div>
+        <div class="rerow-survey-card-title">Electric Cooperative Survey</div>
+        <div class="rerow-survey-card-desc">For cooperative staff and board members exploring or actively pursuing waste-to-energy opportunities in their service area.</div>
+        <div class="rerow-survey-card-cta">Take the survey</div>
+      </a>
+      <a class="rerow-survey-card" href="stakeholder-survey.html">
+        <div class="rerow-survey-card-tag">For Stakeholders</div>
+        <div class="rerow-survey-card-title">Stakeholder & Partner Survey</div>
+        <div class="rerow-survey-card-desc">For researchers, agencies, industry partners, and community organizations interested in engaging with the REROW project.</div>
+        <div class="rerow-survey-card-cta">Take the survey</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="rerow-index-footer">
+    Questions? Contact <a href="mailto:Lisa.Slaughter@NRECA.coop">Lisa.Slaughter@NRECA.coop</a>
+  </div>
+</div>

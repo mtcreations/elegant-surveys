@@ -1,0 +1,381 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+  .rerow-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 700px;
+    font-family: 'DM Sans', sans-serif;
+    background: #111;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .rerow-left {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rerow-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.7) brightness(0.55);
+  }
+
+  .rerow-left-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(0,0,0,0.1) 0%, rgba(10,30,20,0.7) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+  }
+
+  .rerow-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #7ecfaa;
+    border: 1px solid #3a7a5a;
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
+
+  .rerow-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    line-height: 1.0;
+    color: #f0ede6;
+    margin: 0 0 1rem;
+    letter-spacing: 1px;
+  }
+
+  .rerow-headline span {
+    color: #7ecfaa;
+  }
+
+  .rerow-desc {
+    font-size: 13px;
+    color: #eee;
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+  }
+
+  .rerow-learn {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.25rem;
+  }
+
+  .rerow-learn-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #7ecfaa;
+    margin: 0 0 0.75rem;
+  }
+
+  .rerow-panel {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.6rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .rerow-panel:hover {
+    background: rgba(255,255,255,0.07);
+  }
+
+  .rerow-panel-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: #e8e4da;
+    margin: 0 0 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .rerow-panel-body {
+    font-size: 11.5px;
+    color: #7ecfaa;
+    line-height: 1.6;
+    display: none;
+    margin-top: 6px;
+  }
+
+  .rerow-panel.open .rerow-panel-body {
+    display: block;
+  }
+
+  .rerow-panel-toggle {
+    font-size: 16px;
+    color: #7ecfaa;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .rerow-panel.open .rerow-panel-toggle {
+    transform: rotate(45deg);
+  }
+
+  .rerow-right {
+    background: #1a1a18;
+    padding: 2.5rem 2rem;
+    overflow-y: auto;
+    max-height: 700px;
+  }
+
+  .rerow-form-header {
+    margin-bottom: 1.75rem;
+  }
+
+  .rerow-form-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 1px;
+    color: #f0ede6;
+    margin: 0 0 0.4rem;
+  }
+
+  .rerow-form-header p {
+    font-size: 12.5px;
+    color: #987;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .rerow-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 0 0 1.5rem;
+  }
+
+  .rerow-question {
+    margin-bottom: 1.4rem;
+  }
+
+  .rerow-q-label {
+    font-size: 12.5px;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .rerow-q-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #4a7a62;
+    margin-right: 6px;
+  }
+
+  .rerow-radio-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  .rerow-radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: #888;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .rerow-radio-group input[type=radio] {
+    display: none;
+  }
+
+  .rerow-radio-group label:has(input:checked) {
+    background: rgba(126,207,170,0.12);
+    border-color: #3a7a5a;
+    color: #7ecfaa;
+  }
+
+  .rerow-radio-group label:hover {
+    border-color: rgba(255,255,255,0.2);
+    color: #ccc;
+  }
+
+  .rerow-textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    color: #ccc;
+    font-family: 'DM Sans', sans-serif;
+    resize: vertical;
+    min-height: 70px;
+    box-sizing: border-box;
+    transition: border 0.15s;
+    outline: none;
+  }
+
+  .rerow-textarea:focus {
+    border-color: #3a7a5a;
+  }
+
+  .rerow-footer {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 1.25rem;
+  }
+
+  .rerow-footer p {
+    font-size: 11.5px;
+    color: #888;
+    margin: 0 0 1rem;
+    line-height: 1.6;
+  }
+
+  .rerow-footer a {
+    color: #7ecfaa;
+    text-decoration: none;
+  }
+
+  .rerow-submit {
+    background: #7ecfaa;
+    color: #0a1f14;
+    border: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 12px 28px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    width: auto;
+ 
+  }
+
+  .rerow-submit:hover {
+    background: #9adebb;
+  }
+
+  .rerow-submit:active {
+    transform: scale(0.98);
+  }
+</style>
+
+<div class="rerow-wrap">
+
+  <div class="rerow-left">
+    <img src="https://images.pexels.com/photos/9784001/pexels-photo-9784001.jpeg" alt="Aerial view of a scrap metal recycling yard" />
+    <div class="rerow-left-overlay">
+      <div class="rerow-badge">REROW Project</div>
+      <h1 class="rerow-headline">Turning Waste<br>Into <span>Energy</span></h1>
+      <p class="rerow-desc">Rural electric cooperatives sit at the intersection of agriculture, industry, and community. The REROW project helps cooperatives identify, evaluate, and develop waste-to-energy opportunities specific to their service area and member base.</p>
+
+      <div class="rerow-learn">
+        <div class="rerow-learn-title">Learn More</div>
+
+        <div class="rerow-panel" onclick="this.classList.toggle('open')">
+          <div class="rerow-panel-title">
+            Cooperative Advisor Group
+            <span class="rerow-panel-toggle">+</span>
+          </div>
+          <div class="rerow-panel-body">
+            The Cooperative Advisor Group (CAG) is a peer network of cooperative staff and board members actively engaged in waste-to-energy planning. Members provide real-world guidance to the REROW project team, shape research priorities, and gain early access to tools, findings, and funding opportunities. Participation requires approximately 4-6 hours per quarter and is open to cooperatives at any stage of exploration.
+          </div>
+        </div>
+
+        <div class="rerow-panel" onclick="this.classList.toggle('open')">
+          <div class="rerow-panel-title">
+            Waste Stream Analysis Program
+            <span class="rerow-panel-toggle">+</span>
+          </div>
+          <div class="rerow-panel-body">
+            Participating cooperatives receive a no-cost technical assessment of the organic, agricultural, and industrial waste streams present in their service territory. Analysts characterize feedstock availability, energy conversion potential, and proximity to cooperative infrastructure. Results are provided as a confidential summary report and can inform board-level decisions, grant applications, or feasibility studies.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rerow-right">
+    <div class="rerow-form-header">
+      <h2>Interest Questionnaire</h2>
+      <p>Your responses help the REROW team assess cooperative readiness and direct resources where they are most needed.</p>
+    </div>
+    <div class="rerow-divider"></div>
+
+    <div class="rerow-question">
+      <span class="rerow-q-label"><span class="rerow-q-num">01</span>Would you like to receive updates from the REROW project? You can opt out at any time.</span>
+      <div class="rerow-radio-group">
+        <label><input type="radio" name="q1" value="yes"> Yes</label>
+        <label><input type="radio" name="q1" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="rerow-question">
+      <span class="rerow-q-label"><span class="rerow-q-num">02</span>Is your cooperative currently exploring waste-to-energy opportunities in your service area?</span>
+      <div class="rerow-radio-group">
+        <label><input type="radio" name="q2" value="yes"> Yes</label>
+        <label><input type="radio" name="q2" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="rerow-question">
+      <span class="rerow-q-label"><span class="rerow-q-num">03</span>Has your cooperative or board approved moving forward with a waste-to-energy project or preliminary analysis?</span>
+      <div class="rerow-radio-group">
+        <label><input type="radio" name="q3" value="yes"> Yes</label>
+        <label><input type="radio" name="q3" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="rerow-question">
+      <span class="rerow-q-label"><span class="rerow-q-num">04</span>Does your cooperative have an existing waste-to-energy project? (Include decommissioned projects.)</span>
+      <div class="rerow-radio-group">
+        <label><input type="radio" name="q4" value="yes"> Yes</label>
+        <label><input type="radio" name="q4" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="rerow-question">
+      <span class="rerow-q-label"><span class="rerow-q-num">05</span>Would you like to join the Cooperative Advisor Group? <em style="color:#888; font-size:11.5px;">(See description at left.)</em></span>
+      <div class="rerow-radio-group">
+        <label><input type="radio" name="q5" value="yes"> Yes</label>
+        <label><input type="radio" name="q5" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="rerow-question">
+      <span class="rerow-q-label"><span class="rerow-q-num">06</span>Is your cooperative interested in a technical analysis of potential waste streams in your service area? <em style="color:#888; font-size:11.5px;">(See description at left.)</em></span>
+      <div class="rerow-radio-group">
+        <label><input type="radio" name="q6" value="yes"> Yes</label>
+        <label><input type="radio" name="q6" value="no"> No</label>
+      </div>
+    </div>
+
+    <div class="rerow-question">
+      <span class="rerow-q-label"><span class="rerow-q-num">07</span>Anything else you'd like to share? Use this space to add context to any of your answers.</span>
+      <textarea class="rerow-textarea" placeholder="Optional comments..."></textarea>
+    </div>
+
+    <div class="rerow-footer">
+      <p>Questions? Reach out to the project lead directly: <a href="mailto:Lisa.Slaughter@NRECA.coop">Lisa.Slaughter@NRECA.coop</a></p>
+      <button class="rerow-submit">Submit Responses</button>
+    </div>
+  </div>
+
+</div>
